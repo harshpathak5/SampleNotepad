@@ -1,8 +1,5 @@
 <RCC>
-    <qresource prefix="/rec">
-        <file>close.png</file>
-        <file>new.png</file>
-        <file>open-file.png</file>
+    <qresource prefix="/rec/img">
         <file>about.png</file>
         <file>copy.png</file>
         <file>cut.png</file>
@@ -11,5 +8,10 @@
         <file>save-as.png</file>
         <file>save.png</file>
         <file>undo.png</file>
+        <file>new.png</file>
+        <file>open-file.png</file>
+        <file>font.png</file>
+        <file>color.png</file>
+        <file>print.png</file>
     </qresource>
 </RCC>

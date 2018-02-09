@@ -5,6 +5,13 @@
 #include <QFileDialog>
 #include <QTextStream>
 #include <QMessageBox>
+#include <QFont>
+#include <QFontDialog>
+#include <QColor>
+#include <QColorDialog>
+#include <QPrinter>
+#include <QPrintDialog>
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -99,4 +106,30 @@ void MainWindow::on_actionAbout_triggered()
     QString about_text;
     about_text= "This is a sample notepad.";
     QMessageBox::about(this,"title",about_text);
+}
+
+void MainWindow::on_actionFont_triggered()
+{
+    bool ok;
+    QFont font = QFontDialog::getFont(&ok,this);
+    if(ok){
+        ui->textEdit->setFont(font);
+    }else return;
+}
+
+void MainWindow::on_actionColor_triggered()
+{
+    QColor color =QColorDialog::getColor(Qt::white,this,"Choose Color");
+    if (color.isValid()){
+        ui->textEdit->setTextColor(color);
+    }else return;
+}
+
+void MainWindow::on_actionPrint_triggered()
+{
+    QPrinter printer; // add printersupport as an import in QtNotepadDemo.pro
+    printer.setPrinterName(" "); //type printer name
+    QPrintDialog dialog (&printer,this);
+    if (dialog.exec()==QDialog::Rejected) return;
+    ui->textEdit->print(&printer);
 }
